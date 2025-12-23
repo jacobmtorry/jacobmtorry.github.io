@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jacob Torry | Computer Engineering Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Accessibility: skip intro + skip to content -->
+    <a class="sr-skip" href="#content">Skip to content</a>
+
+    <!-- CPU Splash -->
+    <div id="splash" class="splash" aria-label="Intro screen">
+    <button id="skipIntro" class="skip" type="button">Skip intro →</button>
+
+    <div class="chipWrap">
+        <!-- Simple inline SVG “chip” so you don’t need an image file -->
+        <div class="chip" role="button" tabindex="0" aria-label="Enter site">
+            <svg viewBox="0 0 420 280" class="chipSvg" aria-hidden="true">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+            <!-- pins -->
+            <g opacity="0.65">
+                <!-- top pins -->
+                <rect x="70" y="18" width="24" height="8" rx="2"/>
+                <rect x="120" y="18" width="24" height="8" rx="2"/>
+                <rect x="170" y="18" width="24" height="8" rx="2"/>
+                <rect x="220" y="18" width="24" height="8" rx="2"/>
+                <rect x="270" y="18" width="24" height="8" rx="2"/>
+                <rect x="320" y="18" width="24" height="8" rx="2"/>
+
+                <!-- bottom pins -->
+                <rect x="70" y="254" width="24" height="8" rx="2"/>
+                <rect x="120" y="254" width="24" height="8" rx="2"/>
+                <rect x="170" y="254" width="24" height="8" rx="2"/>
+                <rect x="220" y="254" width="24" height="8" rx="2"/>
+                <rect x="270" y="254" width="24" height="8" rx="2"/>
+                <rect x="320" y="254" width="24" height="8" rx="2"/>
+
+                <!-- left pins -->
+                <rect x="18" y="70" width="8" height="24" rx="2"/>
+                <rect x="18" y="120" width="8" height="24" rx="2"/>
+                <rect x="18" y="170" width="8" height="24" rx="2"/>
+                <rect x="18" y="220" width="8" height="24" rx="2"/>
+
+                <!-- right pins -->
+                <rect x="394" y="70" width="8" height="24" rx="2"/>
+                <rect x="394" y="120" width="8" height="24" rx="2"/>
+                <rect x="394" y="170" width="8" height="24" rx="2"/>
+                <rect x="394" y="220" width="8" height="24" rx="2"/>
+            </g>
+
+          <!-- body -->
+          <rect x="60" y="40" width="300" height="200" rx="18" class="chipBody" filter="url(#glow)"/>
+
+          <!-- label -->
+          <text x="210" y="135" text-anchor="middle" class="chipName">Jacob Torry</text>
+          <text x="210" y="165" text-anchor="middle" class="chipSub">Computer Engineer · Systems & Architecture</text>
+
+          <!-- tiny LED -->
+          <circle cx="330" cy="70" r="6" class="chipLed" />
+        </svg>
+
+        <div class="enterHint">click to initialize</div>
+
+        <div class="boot">
+          <div class="bootRow">
+            <span class="bootLabel">boot</span>
+            <span id="bootPct" class="bootPct">0%</span>
+          </div>
+          <div class="bootBar" aria-hidden="true">
+            <div id="bootFill" class="bootFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="microText">Tip: Press Enter to start</div>
+    </div>
+
+    <!-- subtle background traces -->
+    <div class="traces" aria-hidden="true"></div>
+  </div>
+
+  <!-- Main Site -->
+  <div id="site" class="site" data-hidden="true">
+    <header class="topNav">
+      <div class="brand">
+        <span class="brandIcon">⌁</span>
+        <span class="brandName">Jacob Torry</span>
+      </div>
+
+      <nav class="navLinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="content">
+      <!-- Hero -->
+      <section class="hero" aria-label="Hero section">
+        <div class="heroLeft">
+          <h1>Computer Engineer focused on architecture & systems.</h1>
+          <p>
+            I build hardware + software systems — from out-of-order CPU microarchitecture to FPGA graphics pipelines
+            and tooling for data and automation.
+          </p>
+          <div class="heroActions">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn btnGhost" href="assets/resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="console">
+            <div class="consoleTop">console</div>
+            <pre class="consoleBody"><code>> system online
+> init: cache hierarchy loaded
+> init: video pipeline ready
+> status: stable</code></pre>
+          </div>
+          <div class="heroArt" aria-hidden="true">
+            <div class="miniChip"></div>
+            <div class="traceLine"></div>
+            <div class="traceLine"></div>
+            <div class="traceLine"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <h2 class="sectionTitle">02_PROJECTS</h2>
+
+        <div class="grid">
+          <article class="card cardBig" data-modal="p1">
+            <div class="cardHead">
+              <h3>Out-of-Order RISC-V Core</h3>
+              <p class="sub">Tomasulo · LSQ · Caches · Verification</p>
+            </div>
+
+            <div class="thumb thumbCpu" aria-hidden="true"></div>
+
+            <div class="spec">
+              <div><span>Problem</span><p>High-performance core under strict correctness verification.</p></div>
+              <div><span>Approach</span><p>OoO pipeline + parameterized cache hierarchy, tuned for IPC.</p></div>
+              <div><span>Result</span><p>Benchmarked improvements + passing verification on test suite.</p></div>
+            </div>
+
+            <div class="cardFoot">
+              <span class="tag">SystemVerilog</span><span class="tag">Spike/RVFI</span><span class="tag">Verdi</span>
+            </div>
+          </article>
+
+          <article class="card" data-modal="p2">
+            <div class="cardHead">
+              <h3>FPGA Pac-Man HDMI</h3>
+              <p class="sub">AXI4-Lite · BRAM · Sprites · Palette</p>
+            </div>
+            <div class="thumb thumbHdmi" aria-hidden="true"></div>
+            <div class="spec">
+              <div><span>Problem</span><p>Render real-time graphics without a full framebuffer.</p></div>
+              <div><span>Approach</span><p>Tilemap + sprite overlay in RTL, controlled by MicroBlaze C.</p></div>
+              <div><span>Result</span><p>Smooth HDMI output with responsive input + scoring/AI hooks.</p></div>
+            </div>
+            <div class="cardFoot">
+              <span class="tag">Vivado</span><span class="tag">RTL</span><span class="tag">C</span>
+            </div>
+          </article>
+
+          <article class="card" data-modal="p3">
+            <div class="cardHead">
+              <h3>Data Tooling (Python)</h3>
+              <p class="sub">Tkinter · CSV pipeline · Visualization</p>
+            </div>
+            <div class="thumb thumbData" aria-hidden="true"></div>
+            <div class="spec">
+              <div><span>Problem</span><p>Normalize & analyze noisy experiment logs quickly.</p></div>
+              <div><span>Approach</span><p>GUI workflow + interpolation + plotting + batch processing.</p></div>
+              <div><span>Result</span><p>Cleaner datasets and faster analysis iteration.</p></div>
+            </div>
+            <div class="cardFoot">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">UI</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <h2 class="sectionTitle">01_ABOUT</h2>
+        <div class="aboutGrid">
+          <div class="aboutText">
+            <p>
+              I’m a computer engineering student interested in computer architecture, RTL design, and systems tooling.
+              I like projects where correctness and performance both matter — the kind that force you to measure,
+              iterate, and prove it works.
+            </p>
+            <p>
+              I’m especially into microarchitecture (OoO, caches, prefetching), FPGA display pipelines, and building
+              clean tooling that makes debugging less painful.
+            </p>
+          </div>
+
+          <aside class="specSheet" aria-label="Specs panel">
+            <div class="specTitle">SPECS</div>
+            <ul>
+              <li><span>Process</span><b>Computer Engineering (UIUC)</b></li>
+              <li><span>Clock</span><b>Late-night debug stable</b></li>
+              <li><span>ISA</span><b>Verilog · SystemVerilog · C/C++ · Python</b></li>
+              <li><span>Caches</span><b>L1/L2 design, PLRU, pipelining, prefetching</b></li>
+              <li><span>Tools</span><b>Vivado/Vitis · Verdi/VCS · Git</b></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Writing (optional) -->
+      <section id="writing" class="section">
+        <h2 class="sectionTitle">03_WRITING</h2>
+        <div class="card simple">
+          <p>Optional section for technical notes, project writeups, or coursework insights.</p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section">
+        <h2 class="sectionTitle">04_CONTACT</h2>
+        <div class="contactCard">
+          <p>Open to roles in computer architecture, RTL, and systems engineering.</p>
+          <div class="contactLinks">
+            <a href="mailto:YOUR_EMAIL@example.com">Email</a>
+            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <footer class="footer">© 2025 Jacob Torry · system stable.</footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modalPanel" role="dialog" aria-modal="true" aria-label="Project detail">
+      <button id="modalClose" class="modalClose" type="button">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
