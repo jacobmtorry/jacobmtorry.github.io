@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jacob Torry | Computer Engineering Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Jacob Torry | Computer Engineering Portfolio</title> 
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/splash.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
     <!-- Accessibility: skip intro + skip to content -->
     <a class="sr-skip" href="#content">Skip to content</a>
 
-    <!-- CPU Splash -->
-    <div id="splash" class="splash" aria-label="Intro screen">
+<!-- CPU Splash -->
+<div id="splash" class="splash" aria-label="Intro screen">
     <button id="skipIntro" class="skip" type="button">Skip intro →</button>
 
     <div class="chipWrap">
-        <!-- Simple inline SVG “chip” so you don’t need an image file -->
         <div class="chip" role="button" tabindex="0" aria-label="Enter site">
-            <svg viewBox="0 0 420 280" class="chipSvg" aria-hidden="true">
+            <svg viewBox="0 0 450 420" class="chipSvg" aria-hidden="true">
                 <defs>
                     <filter id="glow">
                         <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
@@ -29,235 +32,322 @@
                     </filter>
                 </defs>
 
-            <!-- pins -->
-            <g opacity="0.65">
-                <!-- top pins -->
-                <rect x="70" y="18" width="24" height="8" rx="2"/>
-                <rect x="120" y="18" width="24" height="8" rx="2"/>
-                <rect x="170" y="18" width="24" height="8" rx="2"/>
-                <rect x="220" y="18" width="24" height="8" rx="2"/>
-                <rect x="270" y="18" width="24" height="8" rx="2"/>
-                <rect x="320" y="18" width="24" height="8" rx="2"/>
+                <!-- pins -->
+                <g opacity="0.75">
+                    <!-- top pins -->
+                    <rect class="pin" x="70"  y="0"  width="16" height="48" rx="2"/>
+                    <rect class="pin" x="120" y="0"  width="16" height="48" rx="2"/>
+                    <rect class="pin" x="170" y="0"  width="16" height="48" rx="2"/>
+                    <rect class="pin" x="220" y="0"  width="16" height="48" rx="2"/>
+                    <rect class="pin" x="270" y="0"  width="16" height="48" rx="2"/>
+                    <rect class="pin" x="320" y="0"  width="16" height="48" rx="2"/>
 
-                <!-- bottom pins -->
-                <rect x="70" y="254" width="24" height="8" rx="2"/>
-                <rect x="120" y="254" width="24" height="8" rx="2"/>
-                <rect x="170" y="254" width="24" height="8" rx="2"/>
-                <rect x="220" y="254" width="24" height="8" rx="2"/>
-                <rect x="270" y="254" width="24" height="8" rx="2"/>
-                <rect x="320" y="254" width="24" height="8" rx="2"/>
+                    <!-- bottom pins -->
+                    <rect class="pin" x="70"  y="372" width="16" height="48" rx="2"/>
+                    <rect class="pin" x="120" y="372" width="16" height="48" rx="2"/>
+                    <rect class="pin" x="170" y="372" width="16" height="48" rx="2"/>
+                    <rect class="pin" x="220" y="372" width="16" height="48" rx="2"/>
+                    <rect class="pin" x="270" y="372" width="16" height="48" rx="2"/>
+                    <rect class="pin" x="320" y="372" width="16" height="48" rx="2"/>
 
-                <!-- left pins -->
-                <rect x="18" y="70" width="8" height="24" rx="2"/>
-                <rect x="18" y="120" width="8" height="24" rx="2"/>
-                <rect x="18" y="170" width="8" height="24" rx="2"/>
-                <rect x="18" y="220" width="8" height="24" rx="2"/>
+                    <!-- left pins -->
+                    <rect class="pin" x="2"  y="70"  width="48" height="16" rx="2"/>
+                    <rect class="pin" x="2"  y="120" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="2"  y="170" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="2"  y="220" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="2"  y="270" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="2"  y="320" width="48" height="16" rx="2"/>
 
-                <!-- right pins -->
-                <rect x="394" y="70" width="8" height="24" rx="2"/>
-                <rect x="394" y="120" width="8" height="24" rx="2"/>
-                <rect x="394" y="170" width="8" height="24" rx="2"/>
-                <rect x="394" y="220" width="8" height="24" rx="2"/>
-            </g>
+                    <!-- right pins -->
+                    <rect class="pin" x="370" y="70"  width="48" height="16" rx="2"/>
+                    <rect class="pin" x="370" y="120" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="370" y="170" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="370" y="220" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="370" y="270" width="48" height="16" rx="2"/>
+                    <rect class="pin" x="370" y="320" width="48" height="16" rx="2"/>
+                </g>
 
-          <!-- body -->
-          <rect x="60" y="40" width="300" height="200" rx="18" class="chipBody" filter="url(#glow)"/>
+                <!-- body -->
+                <rect x="60" y="60" width="300" height="300" rx="18" class="chipBody" filter="url(#glow)"/>
 
-          <!-- label -->
-          <text x="210" y="135" text-anchor="middle" class="chipName">Jacob Torry</text>
-          <text x="210" y="165" text-anchor="middle" class="chipSub">Computer Engineer · Systems & Architecture</text>
+                <!-- tiny LED -->
+                <circle cx="330" cy="90" r="6" class="chipLed" />
+            </svg>
 
-          <!-- tiny LED -->
-          <circle cx="330" cy="70" r="6" class="chipLed" />
-        </svg>
-
-        <div class="enterHint">click to initialize</div>
-
-        <div class="boot">
-          <div class="bootRow">
-            <span class="bootLabel">boot</span>
-            <span id="bootPct" class="bootPct">0%</span>
-          </div>
-          <div class="bootBar" aria-hidden="true">
-            <div id="bootFill" class="bootFill"></div>
-          </div>
+            <div class="boot">
+                <div class="bootRow">
+                    <span class="bootLabel">booting</span>
+                    <span id="bootPct" class="bootPct">0%</span>
+                </div>
+                <div class="bootBar" aria-hidden="true">
+                    <div id="bootFill" class="bootFill"></div>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="microText">Tip: Press Enter to start</div>
     </div>
+</div>
 
-    <!-- subtle background traces -->
-    <div class="traces" aria-hidden="true"></div>
-  </div>
-
-  <!-- Main Site -->
-  <div id="site" class="site" data-hidden="true">
-    <header class="topNav">
-      <div class="brand">
-        <span class="brandIcon">⌁</span>
-        <span class="brandName">Jacob Torry</span>
-      </div>
-
-      <nav class="navLinks" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#writing">Writing</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<!-- Main Site -->
+<div id="site" class="site" data-hidden="true">
+    <header class="topNav">        
+        <nav class="navLinks" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#writing">Writing</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
     <main id="content">
-      <!-- Hero -->
-      <section class="hero" aria-label="Hero section">
-        <div class="heroLeft">
-          <h1>Computer Engineer focused on architecture & systems.</h1>
-          <p>
-            I build hardware + software systems — from out-of-order CPU microarchitecture to FPGA graphics pipelines
-            and tooling for data and automation.
-          </p>
-          <div class="heroActions">
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn btnGhost" href="assets/resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
-          </div>
-        </div>
-
-        <div class="heroRight">
-          <div class="console">
-            <div class="consoleTop">console</div>
-            <pre class="consoleBody"><code>> system online
-> init: cache hierarchy loaded
-> init: video pipeline ready
-> status: stable</code></pre>
-          </div>
-          <div class="heroArt" aria-hidden="true">
-            <div class="miniChip"></div>
-            <div class="traceLine"></div>
-            <div class="traceLine"></div>
-            <div class="traceLine"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="section">
-        <h2 class="sectionTitle">02_PROJECTS</h2>
-
-        <div class="grid">
-          <article class="card cardBig" data-modal="p1">
-            <div class="cardHead">
-              <h3>Out-of-Order RISC-V Core</h3>
-              <p class="sub">Tomasulo · LSQ · Caches · Verification</p>
+        <!-- Hero -->
+        <section class="hero" aria-label="Hero section">
+            <div class="heroCenter">
+                <h1>Jacob Torry</h1>
+                <h2>Computer Engineering / Semiconductor Engineering</h2>
+                <p>
+                    I have experience in building hardware + software systems. From out-of-order CPU microarchitecture to FPGA graphics pipelines
+                    and tooling for data and automation.
+                </p>
+                <div class="heroActions">
+                    <a class="btn" href="#projects">View Projects</a>
+                    <a class="btn btnGhost" href="assets/Jacobs_Current_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+                </div>
             </div>
+        </section>
 
-            <div class="thumb thumbCpu" aria-hidden="true"></div>
+        <!-- About -->
+        <section id="about" class="section">
+            <h2 class="sectionTitle">00_ABOUT_ME</h2>
+            <div class="aboutGrid">
+                <div class="aboutText">
+                    <p>
+                        I am a Computer Engineering student at the University of Illinois, with a minor in Semiconductor Engineering.
+                        My interests focus on CPU architecture, GPU architecture and RTL design.
+                        I gravitate toward projects where correctness and performance must be rigorously validated through
+                        debugging, measurement, and iteration.
+                    </p>
+                </div>
 
-            <div class="spec">
-              <div><span>Problem</span><p>High-performance core under strict correctness verification.</p></div>
-              <div><span>Approach</span><p>OoO pipeline + parameterized cache hierarchy, tuned for IPC.</p></div>
-              <div><span>Result</span><p>Benchmarked improvements + passing verification on test suite.</p></div>
+                <aside class="skillTerm" aria-label="Skills terminal">
+                    <div class="skillTermTop">C:\jacob\skills</div>
+                    
+                    <div class="skillLines">
+                        <div class="cmd">&gt; ls focus/</div>
+                        <div class="lsGrid">
+                            <span class="dir">architecture</span>
+                            <span class="dir">rtl</span>
+                            <span class="dir">systems</span>
+                        </div>
+
+                        <div class="cmd">&gt; ls languages/</div>
+                        <div class="lsGrid">
+                            <span class="dir">SystemVerilog</span>
+                            <span class="dir">C</span>
+                            <span class="dir">Python</span>
+                            <span class="dir">SQL</span>
+                            <span class="dir">HTML</span>
+                        </div>
+
+                        <div class="cmd">&gt; ls tools/</div>
+                        <div class="lsGrid">
+                            <span class="dir">Verdi</span>
+                            <span class="dir">VCS</span>
+                            <span class="dir">Vivado</span>
+                            <span class="dir">Git</span>
+                            <span class="dir">Linus</span>
+                            <span class="dir">VS_code</span>
+                        </div>
+
+                        <div class="cmd">&gt; ls hardware/</div>
+                        <div class="lsGrid">
+                            <span class="dir">FPGA</span>
+                            <span class="dir">Raspberry_pi</span>
+                        </div>
+
+                        <div class="cmd">&gt; ls other/</div>
+                        <div class="lsGrid">
+                            <span class="dir">AutoCAD</span>
+                            <span class="dir">Sharepoint</span>
+                            <span class="dir">Excel</span>
+                        </div>
+                    </div>
+                </aside>
             </div>
+        </section>
+        
 
-            <div class="cardFoot">
-              <span class="tag">SystemVerilog</span><span class="tag">Spike/RVFI</span><span class="tag">Verdi</span>
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h2 class="sectionTitle">01_PROJECTS</h2> 
+            <div class="grid">
+                <article class="card cardBig" data-modal="p1">
+                    <div class="cardHead">
+                        <h3>Out-of-Order RISC-V Core</h3>
+                        <p class="sub">Tomasulo · Split-LSQ · Caches · Verification</p>
+                    </div>    
+                    <div class="thumb thumbCpu" aria-hidden="true"></div> 
+                    <div class="spec">
+                        <p class="desc">
+                            Designed and implemented a Tomasulo-style out-of-order RISC-V core with a
+                            split load/store queue, parameterized cache hierarchy, and full Spike/RVFI
+                            verification. The design emphasizes correctness under aggressive
+                            reordering, precise exception handling, and measurable IPC improvements.
+                        </p>
+                    </div>     
+                    <div class="cardFoot">
+                        <span class="tag">SystemVerilog</span>
+                        <span class="tag">Spike/RVFI</span>
+                        <span class="tag">Verdi</span>
+                        <span class="tag">VCS</span>
+                        <span class="tag">RISC-V</span>
+                    </div>
+                </article>  
+                <article class="card" data-modal="p2">
+                    <div class="cardHead">
+                        <h3>FPGA Pac-Man</h3>
+                        <p class="sub">AXI4-Lite · BRAM · Sprites · HDMI</p>
+                    </div>
+                    <div class="thumb thumbHdmi" aria-hidden="true"></div>
+                    <div class="spec">
+                        <p class="desc">
+                            Implemented a real-time Pac-Man game on FPGA with HDMI output using a custom RTL graphics pipeline.
+                            The design renders a tile-based maze and sprites from BRAM, controlled via an AXI4-Lite interface
+                            by C code running on an embedded processor, emphasizing tight hardware–software integration.
+                        </p>
+                    </div>
+                    <div class="cardFoot">
+                        <span class="tag">Vivado</span>
+                        <span class="tag">RTL</span>
+                        <span class="tag">C</span>
+                        <span class="tag">FPGA</span>
+                    </div>
+                </article>  
+                <article class="card" data-modal="p3">
+                    <div class="cardHead">
+                        <h3>College Dashboard</h3>
+                        <p class="sub">React · Electron · Productivity · Desktop App</p>
+                    </div>
+                
+                    <div class="thumb thumbData" aria-hidden="true"></div>
+                
+                    <div class="spec">
+                        <p class="desc">
+                            Designed and built a centralized desktop dashboard to help college students manage
+                            coursework, tasks, and schedules in one place. The application focuses on clean UX,
+                            fast iteration, and extensibility as a real, long-term product rather than a class
+                            assignment.
+                        </p>
+                    </div>
+                
+                    <div class="cardFoot">
+                        <span class="tag">React</span>
+                        <span class="tag">Electron</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </article>
             </div>
-          </article>
+        </section>
 
-          <article class="card" data-modal="p2">
-            <div class="cardHead">
-              <h3>FPGA Pac-Man HDMI</h3>
-              <p class="sub">AXI4-Lite · BRAM · Sprites · Palette</p>
+        <!-- Writing -->
+        <section id="writing" class="section">
+            <h2 class="sectionTitle">03_WRITING</h2>
+            
+            <div class="reportRail" aria-label="Reports">
+                <a
+                    class="reportCard"
+                    href="assets/MP_OOO_Report.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <div class="reportThumb">
+                        <img src="assets/thumbs/mp_ooo.png" alt="MP_OOO Report thumbnail" loading="lazy">
+                    </div>
+                    <div class="reportMeta">
+                        <div class="reportTitle">MP_OOO: A Beautiful Tale</div>
+                        <div class="reportSub">ECE 411 · OoO Core · Final Report</div>
+                    </div>
+                </a>
+            
+                <a
+                    class="reportCard"
+                    href="assets/Pacman_Report.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <div class="reportThumb">
+                        <img src="assets/thumbs/pacman.png" alt="FPGA Pac-Man Report thumbnail" loading="lazy">
+                    </div>
+                    <div class="reportMeta">
+                        <div class="reportTitle">FPGA Pac-Man</div>
+                        <div class="reportSub">ECE 385 · HDMI/AXI · Final Report</div>
+                    </div>
+                </a>
             </div>
-            <div class="thumb thumbHdmi" aria-hidden="true"></div>
-            <div class="spec">
-              <div><span>Problem</span><p>Render real-time graphics without a full framebuffer.</p></div>
-              <div><span>Approach</span><p>Tilemap + sprite overlay in RTL, controlled by MicroBlaze C.</p></div>
-              <div><span>Result</span><p>Smooth HDMI output with responsive input + scoring/AI hooks.</p></div>
-            </div>
-            <div class="cardFoot">
-              <span class="tag">Vivado</span><span class="tag">RTL</span><span class="tag">C</span>
-            </div>
-          </article>
+        </section>
 
-          <article class="card" data-modal="p3">
-            <div class="cardHead">
-              <h3>Data Tooling (Python)</h3>
-              <p class="sub">Tkinter · CSV pipeline · Visualization</p>
+        <!-- Contact -->
+        <section id="contact" class="section contactSection">
+            <h2 class="sectionTitle">04_CONTACT</h2>
+            <div class="contactGrid">
+                <!-- Email -->
+                <a class="contactCardXL" href="https://mail.google.com/mail/?view=cm&fs=1&to=jacobmtorry@gmail.com&su=Portfolio%20Inquiry" target="_blank" rel="noreferrer">
+                    <div class="contactIcon">
+                        <!-- mail icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 7 8-5H4l8 5zm0 2-8-5v10h16V8l-8 5z"/>
+                        </svg>
+                    </div>
+                
+                    <h3>Email</h3>
+                    <p>Best for project inquiries or reaching out</p>
+                
+                    <span class="contactBtn">Connect</span>
+                </a>
+        
+                <!-- GitHub -->
+                <a class="contactCardXL" href="https://github.com/jacobmtorry" target="_blank" rel="noreferrer">
+                    <div class="contactIcon">
+                        <!-- github icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.1c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.25 1.86 1.25 1.08 1.86 2.83 1.32 3.52 1.01.11-.78.42-1.32.76-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/>
+                        </svg>
+                    </div>
+                
+                    <h3>GitHub</h3>
+                    <p>Code and open source</p>
+                
+                    <span class="contactBtn">Connect</span>
+                </a>
+        
+                <!-- LinkedIn -->
+                <a class="contactCardXL" href="https://www.linkedin.com/in/jacobtorry/" target="_blank" rel="noreferrer">
+                    <div class="contactIcon">
+                        <!-- linkedin icon -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3V9zm7 0h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4V9z"/>
+                        </svg>
+                    </div>
+                
+                    <h3>LinkedIn</h3>
+                    <p>Professional network</p>
+                
+                    <span class="contactBtn">Connect</span>
+                </a>
             </div>
-            <div class="thumb thumbData" aria-hidden="true"></div>
-            <div class="spec">
-              <div><span>Problem</span><p>Normalize & analyze noisy experiment logs quickly.</p></div>
-              <div><span>Approach</span><p>GUI workflow + interpolation + plotting + batch processing.</p></div>
-              <div><span>Result</span><p>Cleaner datasets and faster analysis iteration.</p></div>
-            </div>
-            <div class="cardFoot">
-              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">UI</span>
-            </div>
-          </article>
-        </div>
-      </section>
+        </section>
 
-      <!-- About -->
-      <section id="about" class="section">
-        <h2 class="sectionTitle">01_ABOUT</h2>
-        <div class="aboutGrid">
-          <div class="aboutText">
-            <p>
-              I’m a computer engineering student interested in computer architecture, RTL design, and systems tooling.
-              I like projects where correctness and performance both matter — the kind that force you to measure,
-              iterate, and prove it works.
-            </p>
-            <p>
-              I’m especially into microarchitecture (OoO, caches, prefetching), FPGA display pipelines, and building
-              clean tooling that makes debugging less painful.
-            </p>
-          </div>
-
-          <aside class="specSheet" aria-label="Specs panel">
-            <div class="specTitle">SPECS</div>
-            <ul>
-              <li><span>Process</span><b>Computer Engineering (UIUC)</b></li>
-              <li><span>Clock</span><b>Late-night debug stable</b></li>
-              <li><span>ISA</span><b>Verilog · SystemVerilog · C/C++ · Python</b></li>
-              <li><span>Caches</span><b>L1/L2 design, PLRU, pipelining, prefetching</b></li>
-              <li><span>Tools</span><b>Vivado/Vitis · Verdi/VCS · Git</b></li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <!-- Writing (optional) -->
-      <section id="writing" class="section">
-        <h2 class="sectionTitle">03_WRITING</h2>
-        <div class="card simple">
-          <p>Optional section for technical notes, project writeups, or coursework insights.</p>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section">
-        <h2 class="sectionTitle">04_CONTACT</h2>
-        <div class="contactCard">
-          <p>Open to roles in computer architecture, RTL, and systems engineering.</p>
-          <div class="contactLinks">
-            <a href="mailto:YOUR_EMAIL@example.com">Email</a>
-            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
-        <footer class="footer">© 2025 Jacob Torry · system stable.</footer>
-      </section>
     </main>
-  </div>
+</div>
 
-  <!-- Modal Overlay -->
-  <div id="modal" class="modal" aria-hidden="true">
+<!-- Modal Overlay -->
+<div id="modal" class="modal" aria-hidden="true">
     <div class="modalPanel" role="dialog" aria-modal="true" aria-label="Project detail">
-      <button id="modalClose" class="modalClose" type="button">×</button>
-      <div id="modalContent"></div>
+        <button id="modalClose" class="modalClose" type="button">×</button>
+        <div id="modalContent"></div>
     </div>
-  </div>
+</div>
 
-  <script src="main.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
