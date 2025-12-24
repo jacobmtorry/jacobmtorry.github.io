@@ -264,8 +264,7 @@ main{ padding: 30px 22px 80px; max-width: 1100px; margin: 0 auto; }
 
 .lsGrid{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 6px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
 
 .dir{
