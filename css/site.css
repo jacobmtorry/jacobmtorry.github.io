@@ -493,3 +493,46 @@ main{ padding: 30px 22px 80px; max-width: 1100px; margin: 0 auto; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Terminal file tree box */
+.termBox{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  overflow: hidden;
+}
+
+.termTop{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  color: rgba(232,238,246,.65);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 12px;
+}
+
+.termBody{
+  margin: 0;
+  padding: 14px 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(232,238,246,.78);
+  white-space: pre;        /* keep tree aligned */
+  overflow-x: auto;        /* if it overflows on mobile */
+}
+
+/* optional: hide scrollbar like you did elsewhere */
+.termBody{
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.termBody::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.prompt{
+  color: rgba(103,213,255,.85);
+}
