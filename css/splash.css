@@ -1,11 +1,17 @@
 :root{
-    --bg: #0b0f14;
-    --fg: #e8eef6;
-    --muted: rgba(232,238,246,.7);
-    --line: rgba(232,238,246,.12);
-    --accent: #67d5ff;
-    --accent2:#a78bfa;
-    --card: rgba(255,255,255,.06);
+    --bg: #08090b;
+    --panel: #101318;
+    --panel2: #171a21;
+    --fg: #f4f1df;
+    --muted: rgba(244,241,223,.72);
+    --line: rgba(244,241,223,.2);
+    --accent: #43f4ff;
+    --accent2:#ffd447;
+    --accent3:#79ff6b;
+    --danger:#ff4f8b;
+    --card: rgba(244,241,223,.05);
+    --pixel-shadow: 6px 6px 0 #000;
+    --mono: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 *{ box-sizing:border-box; }
@@ -13,10 +19,10 @@ html,body{ height:100%; }
 
 body{
     margin:0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    font-family: var(--mono);
     background:
-        radial-gradient(1200px 800px at 60% 20%, rgba(103,213,255,.12), transparent 60%),
-        radial-gradient(1000px 700px at 20% 70%, rgba(167,139,250,.12), transparent 60%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 8px 8px,
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 8px 8px,
         var(--bg);
     color: var(--fg);
 }
@@ -25,12 +31,29 @@ a{ color: var(--fg); text-decoration:none; }
 
 a:hover{ color: var(--accent); }
 
+body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.035) 0,
+        rgba(255,255,255,.035) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    mix-blend-mode: soft-light;
+    opacity: .34;
+}
+
 .sr-skip{
     position:absolute; left:-9999px; top:auto;
     width:1px; height:1px; overflow:hidden;
 }
 .sr-skip:focus{
     left:16px; top:16px; width:auto; height:auto; padding:10px 12px;
-    background:#111827; border:1px solid var(--line); border-radius:10px;
+    background:#111827; border:2px solid var(--accent); border-radius:0;
     z-index:9999;
 }

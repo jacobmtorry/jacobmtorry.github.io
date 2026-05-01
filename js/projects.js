@@ -2,26 +2,24 @@ export const projectDetails = {
     p1: `
         <h3>Overview</h3>
         <p class="desc">
-            This project focuses on the design and implementation of a Tomasulo-style out-of-order RISC-V processor to overcome
-            the performance limitations of a traditional 5-stage in-order pipeline. By dynamically scheduling instructions based
-            on operand readiness, the core is able to continue executing independent instructions while long-latency operations
-            such as cache misses, multiplication, and division are still in flight.
+            Designed and implemented a Tomasulo-style out-of-order RISC-V processor in SystemVerilog, moving beyond
+            a traditional 5-stage in-order pipeline with dynamic scheduling, register renaming, and in-order commit.
+            The design keeps independent instructions moving while long-latency cache, multiply, and divide operations
+            remain in flight.
         </p>
 
         <h3>Core Architecture</h3>
         <p class="desc">
-            The processor implements register renaming and in-order retirement using a circular reorder buffer (ROB), ensuring
-            precise architectural state while allowing out-of-order execution. Reservation stations track operand readiness for
-            each functional unit, and execution results are broadcast on a common data bus (CDB) to wake dependent instructions.
-            Together, these mechanisms eliminate WAR and WAW hazards while correctly handling RAW dependencies.
+            The RTL includes register renaming, a circular reorder buffer (ROB), reservation stations, functional-unit issue
+            logic, and a common data bus (CDB). These structures remove WAR/WAW hazards, track RAW dependencies, and preserve
+            precise architectural state through in-order retirement.
         </p>
 
         <h3>Memory System</h3>
         <p class="desc">
-            Memory support was extended through the addition of a data cache, a dedicated memory functional unit, and a split
-            load-store queue. Stores are maintained in program order, while loads are tracked independently and issued when safe
-            using a store masking mechanism. This design removes structural serialization present in a combined LSQ while
-            preserving correctness.
+            The memory subsystem includes parameterized instruction/data caches, a memory functional unit, and a split
+            load-store queue. Stores remain ordered, while loads issue independently when safe through store masking, improving
+            throughput without violating memory correctness.
         </p>
 
         <h3>Control Flow</h3>
@@ -41,13 +39,13 @@ export const projectDetails = {
 
         <h3>Verification & Results</h3>
         <p class="desc">
-            Correctness was verified using Spike and RVFI-based monitoring, ensuring that instructions executed out of order
-            while always committing in program order. Performance improvements were measured using benchmark-driven IPC and
-            cache metrics, demonstrating the impact of architectural optimizations on overall throughput.
+            Correctness was verified with Spike and RVFI-based monitoring so out-of-order execution could be checked against
+            in-order architectural commit. Performance was evaluated with benchmark IPC and cache metrics to measure the impact
+            of branch prediction, cache configuration, and memory-system changes.
         </p>
 
         <p style="margin-top:14px;">
-            <a class="btn" href="https://github.com/jacobmtorry/ECE411" target="_blank" rel="noreferrer">
+            <a class="btn" href="https://github.com/jacobmtorry/ECE411/tree/main/mp_ooo" target="_blank" rel="noreferrer">
                 View Repo
             </a>
         </p>
@@ -56,28 +54,23 @@ export const projectDetails = {
         <h2>FPGA Pac-Man (HDMI)</h2>
 
         <p class="desc">
-            Recreated the classic Pac-Man arcade game on FPGA using a custom HDMI graphics pipeline
-            and a MicroBlaze-controlled game engine. The design combines RTL-based rendering with
-            C-driven game logic, emphasizing precise timing, memory-mapped graphics control, and
-            hardware–software integration.
+            Recreated Pac-Man on FPGA using a custom RTL HDMI graphics pipeline and a MicroBlaze-controlled
+            game engine. The system combines cycle-timed rendering hardware with C-driven control logic,
+            emphasizing memory-mapped graphics, BRAM organization, and hardware/software integration.
         </p>
 
         <h3>Rendering & Display Pipeline</h3>
         <p class="desc">
-            The game is rendered using a tile-based background stored in BRAM and sprite overlays
-            for Pac-Man and the ghosts. The maze is represented as a 28×36 tilemap with 8×8 pixel
-            tiles, enabling efficient reuse of tile codes for walls, pellets, text, and lives.
-            Tile codes are fetched from BRAM and expanded into pixel data through a custom font ROM,
-            adapted from prior HDMI text controller designs.
+            The RTL renderer uses a BRAM-backed tilemap for the maze and sprite overlays for Pac-Man and
+            the ghosts. A 28×36 map of 8×8 tiles reuses tile codes for walls, pellets, text, and lives,
+            with tile data expanded into pixels through a custom ROM-based graphics path.
         </p>
 
         <h3>Sprites & Graphics Composition</h3>
         <p class="desc">
-            Pac-Man and the ghosts are implemented as ROM-based sprites rendered on top of the
-            tilemap with priority ordering. Sprite positions and orientations are updated via
-            AXI4-Lite registers written by the game logic. Pac-Man supports directional sprites,
-            while the ghosts use multi-bit color encoding to support state-dependent visuals such
-            as scared mode.
+            Pac-Man and the ghosts are ROM-based sprites composed over the tile layer with priority ordering.
+            Sprite positions, orientations, and visual states are updated through AXI4-Lite registers written
+            by software, including directional Pac-Man frames and multi-bit ghost color states.
         </p>
 
         <h3>Game Logic & Control</h3>
@@ -99,9 +92,9 @@ export const projectDetails = {
         <h3>System Integration</h3>
         <p class="desc">
             The project integrates USB keyboard input, AXI-based peripherals, BRAM-backed graphics
-            memory, and an HDMI output pipeline within a unified FPGA system. The design highlights
-            careful coordination between real-time rendering, memory access, and software-driven
-            control.
+            memory, and an HDMI output pipeline within a unified FPGA system. Debugging focused on
+            display timing, memory updates, sprite composition, and reliable software control of RTL
+            graphics hardware.
         </p>
 
         <p style="margin-top:14px;">
@@ -150,6 +143,58 @@ export const projectDetails = {
             </a>
             <a class="btn" href="https://jacobmtorry.github.io/collegeDashboard/" target="_blank" rel="noreferrer">
                 View Demo
+            </a>
+        </p>
+    `,
+    p4: `
+        <h3>Core Architecture</h3>
+        <p class="desc">
+            The processor is built around a modular pipeline with stage registers between IF/ID, ID/EX, EX/MEM, and MEM/WB.
+            The execute stage integrates ALU and comparison logic, while a centralized control structure manages instruction flow,
+            register access, and pipeline state across all stages.
+        </p>
+
+        <h3>Hazard Handling</h3>
+        <p class="desc">
+            Data hazards are resolved using full forwarding paths from EX/MEM and MEM/WB stages back into execute, minimizing
+            unnecessary stalls. Load-use hazards are detected and handled through targeted pipeline stalling, while control hazards
+            are resolved using branch detection and pipeline flush logic to maintain correct execution.
+        </p>
+
+        <h3>Memory System</h3>
+        <p class="desc">
+            The design uses a dual-port memory interface separating instruction and data memory, with a blocking memory model
+            controlled through handshake signals. Memory operations are coordinated across pipeline stages, ensuring correct
+            load/store behavior even under stall conditions.
+        </p>
+
+        <h3>Control Flow</h3>
+        <p class="desc">
+            Branch instructions are resolved in the execute stage, with taken branches triggering pipeline flushes and program
+            counter redirection. This ensures incorrect speculative instructions are removed while maintaining precise control
+            flow throughout execution.
+        </p>
+
+        <h3>Verification & Results</h3>
+        <p class="desc">
+            The processor was verified against a Spike reference model using RVFI integration, ensuring instruction-level correctness.
+            Performance was evaluated using IPC metrics under hazard-free and constrained conditions, validating correct pipeline
+            behavior and efficient hazard resolution.
+        </p>
+
+        <h3>Tools & Skills</h3>
+        <ul>
+            <li>SystemVerilog (RTL Design)</li>
+            <li>RISC-V (RV32I ISA)</li>
+            <li>Computer Architecture (Pipelining, Hazards, Forwarding)</li>
+            <li>Hardware Verification (Spike, RVFI)</li>
+            <li>Digital Design & Debugging</li>
+            <li>Pipeline Control Logic (Stalls, Flush, Hazard Detection)</li>
+        </ul>
+
+        <p style="margin-top:14px;">
+            <a class="btn" href="https://github.com/jacobmtorry/ECE411/tree/main/mp_pipeline" target="_blank" rel="noreferrer">
+                View Repo
             </a>
         </p>
     `,
