@@ -22,9 +22,14 @@ export function initModal() {
     document.querySelectorAll("[data-modal]").forEach((card) => {
         card.addEventListener("click", () => openModal(card.dataset.modal));
         card.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") openModal(card.dataset.modal);
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openModal(card.dataset.modal);
+            }
         });
         card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `Open details for ${card.querySelector("h3")?.textContent || "project"}`);
     });
 
     modalClose.addEventListener("click", closeModal);
