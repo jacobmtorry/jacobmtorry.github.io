@@ -10,7 +10,7 @@
     --accent3:#79ff6b;
     --danger:#ff4f8b;
     --card: rgba(244,241,223,.05);
-    --pixel-shadow: 6px 6px 0 #000;
+    --pixel-shadow: 4px 4px 0 #000;
     --mono: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -19,7 +19,7 @@ html,body{ height:100%; }
 
 body{
     margin:0;
-    font-family: var(--mono);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     background:
         linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 8px 8px,
         linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px) 0 0 / 8px 8px,
@@ -45,7 +45,7 @@ body::before{
         transparent 4px
     );
     mix-blend-mode: soft-light;
-    opacity: .34;
+    opacity: .14;
 }
 
 .sr-skip{

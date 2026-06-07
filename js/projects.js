@@ -198,4 +198,64 @@ export const projectDetails = {
             </a>
         </p>
     `,
+    p5: `
+        <h3>Overview</h3>
+        <p class="desc">
+            Implemented a complete UART system in SystemVerilog on the AMD Urbana FPGA board. The project was built
+            incrementally from timing generation through real serial communication with a PC terminal, using standard
+            8N1 framing with one start bit, eight data bits, no parity, and one stop bit.
+        </p>
+
+        <h3>Baud-Rate Generation</h3>
+        <p class="desc">
+            Designed a parameterized baud generator for the 100 MHz board clock. The module counts clock cycles and
+            emits a one-cycle baud tick at the selected serial rate, including common settings such as 9600 and
+            115200 baud. Verification checked reset behavior, interval accuracy, one-cycle pulse width, and early-tick
+            prevention.
+        </p>
+
+        <h3>UART Transmit & Receive</h3>
+        <p class="desc">
+            Built independent TX and RX modules around finite-state machines. The transmitter latches a byte, sends the
+            start bit, shifts eight data bits LSB-first, and finishes with a stop bit. The receiver detects the start
+            bit, samples near the middle of each bit period, reconstructs the byte, and pulses completion when the frame
+            is valid.
+        </p>
+
+        <h3>Verification & Loopback</h3>
+        <p class="desc">
+            Verified the baud generator, transmitter, and receiver independently before connecting TX serial output to
+            RX serial input in simulation. The loopback testbench transmitted bytes, waited for receive completion, and
+            checked that received data matched the transmitted value.
+        </p>
+
+        <h3>FPGA Bring-Up</h3>
+        <p class="desc">
+            Brought the design onto the Urbana FPGA board with an internal loopback test. A button-triggered transmit
+            sent a known byte, the receiver captured it, and RGB LED status indicated whether the received byte matched
+            the expected value.
+        </p>
+
+        <h3>PC Echo Test</h3>
+        <p class="desc">
+            Completed a PC-to-FPGA-to-PC echo path where a serial terminal sends a character to the FPGA, the FPGA
+            receives the byte, and the transmitter sends the same byte back. Testing included matching-baud operation
+            and a mismatched-baud demonstration to show timing sensitivity in real serial communication.
+        </p>
+
+        <h3>Tools & Skills</h3>
+        <ul>
+            <li>SystemVerilog RTL design</li>
+            <li>UART 8N1 serial protocol</li>
+            <li>Finite-state machine design</li>
+            <li>Vivado FPGA constraints and bring-up</li>
+            <li>Self-checking simulation and loopback verification</li>
+            <li>PC terminal serial testing</li>
+        </ul>
+        <p style="margin-top:14px;">
+            <a class="btn" href="https://github.com/jacobmtorry/UART" target="_blank" rel="noreferrer">
+                View Repo
+            </a>
+        </p>
+    `,
 };

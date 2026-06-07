@@ -6,91 +6,18 @@
     <title>Jacob Torry | Computer Engineering Portfolio</title>
 
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/splash.css" />
+    <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/site.css" />
     <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
-    <!-- Accessibility: skip intro + skip to content -->
+    <!-- Accessibility: skip to content -->
     <a class="sr-skip" href="#content">Skip to content</a>
     <div id="fabricBg" class="fabricBg" aria-hidden="true"></div>
 
-<!-- CPU Splash -->
-<div id="splash" class="splash" aria-label="Intro screen">
-    <button id="skipIntro" class="skip" type="button">Skip intro →</button>
-
-    <div class="chipWrap">
-        <div class="chip" role="button" tabindex="0" aria-label="Enter site">
-            <svg viewBox="0 0 450 420" class="chipSvg" aria-hidden="true">
-                <defs>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-
-                <!-- pins -->
-                <g opacity="0.75">
-                    <!-- top pins -->
-                    <rect class="pin" x="70"  y="0"  width="16" height="48"/>
-                    <rect class="pin" x="120" y="0"  width="16" height="48"/>
-                    <rect class="pin" x="170" y="0"  width="16" height="48"/>
-                    <rect class="pin" x="220" y="0"  width="16" height="48"/>
-                    <rect class="pin" x="270" y="0"  width="16" height="48"/>
-                    <rect class="pin" x="320" y="0"  width="16" height="48"/>
-
-                    <!-- bottom pins -->
-                    <rect class="pin" x="70"  y="372" width="16" height="48"/>
-                    <rect class="pin" x="120" y="372" width="16" height="48"/>
-                    <rect class="pin" x="170" y="372" width="16" height="48"/>
-                    <rect class="pin" x="220" y="372" width="16" height="48"/>
-                    <rect class="pin" x="270" y="372" width="16" height="48"/>
-                    <rect class="pin" x="320" y="372" width="16" height="48"/>
-
-                    <!-- left pins -->
-                    <rect class="pin" x="2"  y="70"  width="48" height="16"/>
-                    <rect class="pin" x="2"  y="120" width="48" height="16"/>
-                    <rect class="pin" x="2"  y="170" width="48" height="16"/>
-                    <rect class="pin" x="2"  y="220" width="48" height="16"/>
-                    <rect class="pin" x="2"  y="270" width="48" height="16"/>
-                    <rect class="pin" x="2"  y="320" width="48" height="16"/>
-
-                    <!-- right pins -->
-                    <rect class="pin" x="370" y="70"  width="48" height="16"/>
-                    <rect class="pin" x="370" y="120" width="48" height="16"/>
-                    <rect class="pin" x="370" y="170" width="48" height="16"/>
-                    <rect class="pin" x="370" y="220" width="48" height="16"/>
-                    <rect class="pin" x="370" y="270" width="48" height="16"/>
-                    <rect class="pin" x="370" y="320" width="48" height="16"/>
-                </g>
-
-                <!-- body -->
-                <rect x="60" y="60" width="300" height="300" class="chipBody" filter="url(#glow)"/>
-
-                <!-- tiny LED -->
-                <circle cx="330" cy="90" r="6" class="chipLed" />
-            </svg>
-
-            <div class="boot">
-                <div class="bootRow">
-                    <span class="bootLabel">booting_portfolio</span>
-                    <span id="bootPct" class="bootPct">0%</span>
-                </div>
-                <div class="bootBar" aria-hidden="true">
-                    <div id="bootFill" class="bootFill"></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <!-- Main Site -->
-<div id="site" class="site" data-hidden="true">
+<div id="site" class="site">
     <header class="topNav">
         <nav class="navLinks" aria-label="Primary">
             <a href="#focus">Focus</a>
@@ -350,6 +277,32 @@
                         <span class="tag">RISC-V</span>
                     </div>
                 </article>
+                <article class="card" data-modal="p5">
+                    <div class="cardHead">
+                        <h3>UART on AMD Urbana FPGA</h3>
+                        <p class="sub">SystemVerilog · UART · Vivado · FPGA Bring-Up</p>
+                    </div>
+                    <div class="thumb thumbUart" aria-hidden="true"></div>
+                    <div class="statRail" aria-label="UART project highlights">
+                        <span class="statChip">8N1 serial framing</span>
+                        <span class="statChip">TX/RX FSMs</span>
+                        <span class="statChip">Baud generator</span>
+                        <span class="statChip">PC echo test</span>
+                    </div>
+                    <div class="spec">
+                        <p class="desc">
+                            Implemented and verified a UART system on the AMD Urbana FPGA board, progressing from
+                            baud-rate generation and independent TX/RX modules to loopback simulation, FPGA loopback,
+                            and a PC-to-FPGA-to-PC serial echo path.
+                        </p>
+                    </div>
+                    <div class="cardFoot">
+                        <span class="tag">SystemVerilog</span>
+                        <span class="tag">Vivado</span>
+                        <span class="tag">UART</span>
+                        <span class="tag">FPGA</span>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -488,15 +441,15 @@ classes/
 │   ├── ECE  210  Analog Signal Processing
 │   ├── ECE  391  Computer Systems Engineering
 │   ├── ECE  340  Semiconductor Electronics
+|   ├── ECE  374  Algorithms & Models of Computation
 │   ├── ECE  385  Digital Systems Laboratory
+|   ├── ECE  408  Applied Parallel Programming
+|   ├── ECE  443  LEDs & Solar Cells
 │   ├── ECE  448  Artificial Intelligence
 │   ├── ECE  411  Computer Organization & Design
 │   ├── PHYS 370  Quantum Information & Computing
 │   └── NPRE 321  Plasmas & Applications
 └── in_progress/
-    ├── ECE 374 Algorithms & Models of Computation
-    ├── ECE 408 Applied Parallel Programming
-    ├── ECE 443 LEDs & Solar Cells
     └── ECE 444 IC Device Theory & Fabrication
 
                 </pre>
@@ -565,6 +518,6 @@ classes/
     </div>
 </div>
 
-<script type="module" src="js/app.js?v=20260501"></script>
+<script type="module" src="js/app.js?v=20260606"></script>
 </body>
 </html>

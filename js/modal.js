@@ -1,4 +1,4 @@
-import { projectDetails } from "./projects.js?v=20260501";
+import { projectDetails } from "./projects.js?v=20260606";
 
 export function initModal() {
     const modal = document.getElementById("modal");
