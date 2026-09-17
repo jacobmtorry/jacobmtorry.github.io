@@ -581,3 +581,50 @@ main {
         margin-top: 0;
     }
 }
+
+
+/* Nanolab: interactive wafer process map. */
+#nanolab { scroll-margin-top: 110px; }
+.fabIntro { max-width: 640px; margin: 0 0 26px; color: var(--muted); line-height: 1.6; font-size: 18px; }
+.fabConsole { border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--panel-soft); overflow: hidden; box-shadow: var(--shadow); }
+.fabToolbar, .fabFooter { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 18px 20px; background: var(--panel); }
+.fabToolbar { border-bottom: 1px solid var(--line); }
+.fabDraft { color: var(--muted); font-size: 12px; }
+.waferLayout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(24px, 4vw, 50px); padding: clamp(16px, 3vw, 36px); }
+.waferExplorer { min-width: 0; text-align: center; }
+.waferMap { position: relative; isolation: isolate; width: 100%; max-width: 460px; aspect-ratio: 1; margin: 0 auto 24px; }
+.waferSurface { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 12px 14px #17211f22); pointer-events: none; }
+#waferDies { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr); }
+.waferDie { margin: 4px; min-width: 0; border: 1px solid #b5d7e6; border-radius: 4px; color: #f3f8ff; background: #263e50; font: 700 clamp(14px, 2vw, 20px) var(--mono); cursor: pointer; transition: background .18s, box-shadow .18s; }
+.waferDie:hover { background: #3b6076; }
+.waferDie.isVisited { background: #dff6ea; color: #176848; border-color: var(--green); }
+.waferDie[aria-pressed="true"] { background: var(--blue); color: white; border-color: #d8ecff; box-shadow: 0 0 0 3px #d8ecff80, 0 0 25px #1479d480; }
+.waferHint { font-size: 14px; color: var(--ink); }
+.waferLegend { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; font: 11px var(--mono); color: var(--muted); }
+.waferLegend span::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border: 1px solid var(--blue); background: var(--blue); }
+.waferLegend span:nth-child(2)::before { background: var(--green-soft); border-color: var(--green); }
+.waferLegend span:nth-child(3)::before { background: #263e50; border-color: #263e50; }
+.waferNote { max-width: 36ch; margin: 16px auto 0; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.waferCard { min-width: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--panel); }
+.fabMedia { aspect-ratio: 1; background: var(--panel-soft); }
+.fabMedia img { width: 100%; height: 100%; object-fit: cover; }
+.fabPlaceholder { display: grid; place-items: center; min-height: 200px; height: 100%; background: linear-gradient(135deg, var(--blue-soft), var(--panel-soft)); }
+.fabPlaceholder span { padding: 10px; border: 1px dashed var(--line-strong); color: var(--muted); font: 11px var(--mono); }
+.waferCardBody { padding: 14px 18px 16px; border-top: 1px solid var(--line); }
+.waferCardBody .moduleName { font-size: 10px; }
+.waferCard h3 { margin: 6px 0; font-size: 21px; line-height: 1.2; }
+.waferCard p { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 0; }
+.fabFooter { border-top: 1px solid var(--line); }
+#fabStatus { font: 12px var(--mono); color: var(--muted); }
+.fabControls { display: flex; gap: 10px; align-items: center; }
+.fabConsole button { cursor: pointer; }
+.fabControls .btn { width: 44px; }
+.fabControls .btn:disabled { opacity: .35; cursor: default; transform: none; box-shadow: none; }
+.fabConsole :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.waferMap :focus-visible { outline-color: var(--yellow); }
+@media (max-width: 720px) {
+    .waferLayout { grid-template-columns: 1fr; }
+    .waferMap { max-width: 360px; }
+    .fabControls { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .waferDie { transition: none; } }

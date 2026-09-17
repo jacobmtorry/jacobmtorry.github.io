@@ -21,6 +21,7 @@
         </a>
         <nav class="navLinks" aria-label="Primary">
             <a href="#projects">Projects</a>
+            <a href="#nanolab">Nanolab</a>
             <a href="#verification">Verification</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
@@ -179,6 +180,55 @@
                     </div>
                 </article>
             </div>
+        </section>
+
+        <section id="nanolab" class="section" aria-labelledby="nanolabTitle">
+            <div class="sectionHeader"><h2 id="nanolabTitle">Inside the nanolab</h2></div>
+            <p class="fabIntro">Fabricating integrated circuits on a wafer. Explore the process, one die at a time.</p>
+            <div class="fabConsole">
+                <div class="fabToolbar">
+                    <span class="moduleName">wafer_process / IC fabrication</span>
+                </div>
+                <div class="waferLayout">
+                    <div class="waferExplorer">
+                        <div class="waferMap" role="group" aria-label="Wafer process map. Choose a numbered die.">
+                            <svg class="waferSurface" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="waferSilicon" x1="0" y1="0" x2="1" y2="1">
+                                        <stop stop-color="#243e52"/><stop offset=".45" stop-color="#65747d"/><stop offset="1" stop-color="#31545c"/>
+                                    </linearGradient>
+                                    <pattern id="waferGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M20 0H0V20" fill="none" stroke="#b5d7e6" stroke-opacity=".3" stroke-width=".4"/>
+                                    </pattern>
+                                    <path id="waferOutline" d="M30.82 94H69.18A48 48 0 0 0 98 50A48 48 0 0 0 59.75 3H40.25A48 48 0 0 0 2 50A48 48 0 0 0 30.82 94Z"/>
+                                </defs>
+                                <use href="#waferOutline" fill="url(#waferSilicon)" stroke="#91a8b0" stroke-width="1"/>
+                                <use href="#waferOutline" fill="url(#waferGrid)"/>
+                            </svg>
+                            <div id="waferDies"></div>
+                        </div>
+                        <p class="waferHint">Select a numbered die to explore a stage.</p>
+                        <div class="waferLegend"><span>Selected</span><span>Explored</span><span>Unopened</span></div>
+                        <p class="waferNote">Process map · positions represent stages, not physical die locations.</p>
+                    </div>
+                    <article class="waferCard" aria-labelledby="waferTitle">
+                        <div id="waferPhoto" class="fabMedia"></div>
+                        <div class="waferCardBody">
+                            <span id="waferLabel" class="moduleName"></span>
+                            <h3 id="waferTitle"></h3>
+                            <p id="waferDescription"></p>
+                        </div>
+                    </article>
+                </div>
+                <div class="fabFooter">
+                    <span id="fabStatus" role="status" aria-live="polite"></span>
+                    <div class="fabControls">
+                        <button id="fabPrevious" class="btn" type="button" aria-label="Previous fabrication stage">←</button>
+                        <button id="fabNext" class="btn" type="button" aria-label="Next fabrication stage">→</button>
+                    </div>
+                </div>
+            </div>
+            <noscript><p>Enable JavaScript to explore the wafer map.</p></noscript>
         </section>
 
         <section id="verification" class="section splitSection">
