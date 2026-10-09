@@ -2,8 +2,10 @@
 // to index.html (for example: images/nanolab/lithography.jpg). Keep alt descriptive.
 export const fabricationStages = [
     { title: "Wafer preparation", label: "prepare", image: "images/IMG_7407.jpg", alt: "Wafer preparation photo", description: "4in Si Wafer (100) ∙ Initial Degrease ∙ RCA Clean ∙ Initial Oxidation" },
-    { title: "Photolithography", label: "pattern", image: "images/IMG_7408.jpg", alt: "Nanolab project photograph for the patterning stage", description: "Spun on Photoresist ∙ Align Mask ∙ UV Exposure ∙ Development" },
+    { title: "Photolithography", label: "mask_1", image: "images/IMG_7408.jpg", alt: "Nanolab project photograph for the patterning stage", description: "Spun on Photoresist ∙ Align Mask ∙ UV Exposure ∙ Development" },
     { title: "Etching", label: "etch", image: "images/IMG_7409.jpg", alt: "", description: "HF Etch ∙ Strip Photoresist" },
+    { title: "Boron Drive", label: "boron_drive", image: "images/IMG_7428.jpg", alt: "", description: "Boron Predeposition ∙ Boron Deposition ∙ BSG Etch ∙ Boron Drive"},
+    { title: "Photolithography", label: "mask_2", image: "images/IMG_7429.jpg", alt: "", description: "Mask 2 Photolithography ∙ BOE Etch"}
 ];
 
 function photo(stage) {
