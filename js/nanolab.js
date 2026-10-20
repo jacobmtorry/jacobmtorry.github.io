@@ -5,7 +5,8 @@ export const fabricationStages = [
     { title: "Photolithography", label: "mask_1", image: "images/IMG_7408.jpg", alt: "Nanolab project photograph for the patterning stage", description: "Spun on Photoresist ∙ Align Mask ∙ UV Exposure ∙ Development" },
     { title: "Etching", label: "etch", image: "images/IMG_7409.jpg", alt: "", description: "HF Etch ∙ Strip Photoresist" },
     { title: "Boron Drive", label: "boron_drive", image: "images/IMG_7428.jpg", alt: "", description: "Boron Predeposition ∙ Boron Deposition ∙ BSG Etch ∙ Boron Drive"},
-    { title: "Photolithography", label: "mask_2", image: "images/IMG_7429.jpg", alt: "", description: "Mask 2 Photolithography ∙ BOE Etch"}
+    { title: "Photolithography", label: "mask_2", image: "images/IMG_7429.jpg", alt: "", description: "Mask 2 Photolithography ∙ BOE Etch"},
+    { title: "Phosphorus Deposition", label: "phosphorus_drive", image: "images/IMG_7436.jpg", alt: "", description: "Phosphorus Predeposition ∙ Phosphorus Deposition"}
 ];
 
 function photo(stage) {
