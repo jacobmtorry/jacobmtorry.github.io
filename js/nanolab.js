@@ -6,7 +6,8 @@ export const fabricationStages = [
     { title: "Etching", label: "etch", image: "images/IMG_7409.jpg", alt: "", description: "HF Etch ∙ Strip Photoresist" },
     { title: "Boron Drive", label: "boron_drive", image: "images/IMG_7428.jpg", alt: "", description: "Boron Predeposition ∙ Boron Deposition ∙ BSG Etch ∙ Boron Drive"},
     { title: "Photolithography", label: "mask_2", image: "images/IMG_7429.jpg", alt: "", description: "Mask 2 Photolithography ∙ BOE Etch"},
-    { title: "Phosphorus Deposition", label: "phosphorus_drive", image: "images/IMG_7436.jpg", alt: "", description: "Phosphorus Predeposition ∙ Phosphorus Deposition"}
+    { title: "Phosphorus Deposition", label: "phosphorus_drive", image: "images/IMG_7436.jpg", alt: "", description: "Phosphorus Predeposition ∙ Phosphorus Deposition"},
+    { title: "PSG Etch", label: "psg_etch", image: "images/IMG_7438.jpg", alt: "", description: "Phosphosilicate glass Etch "}
 ];
 
 function photo(stage) {
@@ -35,7 +36,7 @@ export function initNanolab() {
     if (!map) return;
     const previous = document.querySelector("#fabPrevious");
     const next = document.querySelector("#fabNext");
-    const positions = [[2, 2], [2, 4], [3, 3], [4, 2], [4, 4]];
+    const positions = [[2, 2], [2, 3], [2, 4], [3, 2], [3, 3], [4, 2], [4, 4]];
     let selected = 0;
     const visited = new Set();
     const buttons = fabricationStages.map((stage, index) => {

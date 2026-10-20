@@ -346,14 +346,6 @@ main {
     z-index: 1;
 }
 
-.cardSignal {
-    height: 8px;
-    width: 88px;
-    margin-bottom: 22px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow));
-    box-shadow: 0 0 22px rgba(20, 121, 212, .24);
-}
 
 .projectMeta {
     display: flex;
@@ -428,7 +420,6 @@ main {
     top: 0;
     bottom: 0;
     width: 6px;
-    background: linear-gradient(var(--blue), var(--green), var(--yellow));
 }
 
 .skillDomain {
