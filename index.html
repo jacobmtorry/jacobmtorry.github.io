@@ -1178,70 +1178,7 @@
             </figcaption>
           </figure>
           <div class="lab-stages">
-            <div role="group" aria-label="Select a fabrication stage">
-              <button
-                class="stage"
-                data-stage="0"
-                aria-pressed="true"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">01</span
-                ><span class="name">Wafer preparation</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="1"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">02</span
-                ><span class="name">Photolithography · Mask 1</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="2"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">03</span><span class="name">Etching</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="3"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">04</span
-                ><span class="name">Boron Drive</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="4"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">05</span
-                ><span class="name">Photolithography · Mask 2</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="5"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">06</span
-                ><span class="name">Phosphorus Deposition</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span></button
-              ><button
-                class="stage"
-                data-stage="6"
-                aria-pressed="false"
-                aria-controls="stage-photo stage-description"
-              >
-                <span class="number">07</span><span class="name">PSG Etch</span
-                ><span class="stage-arrow" aria-hidden="true">↗</span>
-              </button>
-            </div>
+            <div id="stage-list" role="group" aria-label="Select a fabrication stage"></div>
             <p
               class="stage-description"
               id="stage-description"
@@ -1251,7 +1188,7 @@
               Oxidation
             </p>
             <div class="stage-controls">
-              <span class="mono" id="stage-count">01 / 07</span>
+              <span class="mono" id="stage-count"></span>
               <div>
                 <button
                   class="square"
@@ -1735,6 +1672,20 @@
           alt: "",
           description: "Phosphosilicate glass Etch ",
         },
+        {
+          title: "Photolithography",
+          label: "mask_3",
+          image: "images/IMG_7445.jpg",
+          alt: "",
+          description: "Mask 3 Photolithography ",
+        },
+        {
+          title: "Mask 3 BOE Etch",
+          label: "mask_3_etch",
+          image: "images/IMG_7446.jpg",
+          alt: "",
+          description: "Mask 3 Etch ∙ PR Removal ",
+        },
       ];
       const $ = (s) => document.querySelector(s),
         $$ = (s) => [...document.querySelectorAll(s)];
@@ -1775,6 +1726,33 @@
           $("#case-dialog").scrollTop = 0;
         }),
       );
+      // Build the navigation from the same data as the photos.
+      stages.forEach((stage, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "stage";
+        button.dataset.stage = String(index);
+        button.setAttribute("aria-pressed", "false");
+        button.setAttribute("aria-controls", "stage-photo stage-description");
+
+        const number = document.createElement("span");
+        number.className = "number";
+        number.textContent = String(index + 1).padStart(2, "0");
+
+        const name = document.createElement("span");
+        name.className = "name";
+        const mask = stage.label.match(/^mask_(\d+)$/);
+        name.textContent = stage.title + (mask ? " · Mask " + mask[1] : "");
+
+        const arrow = document.createElement("span");
+        arrow.className = "stage-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "↗";
+
+        button.append(number, name, arrow);
+        $("#stage-list").append(button);
+      });
+
       let selected = 0;
       function selectStage(index) {
         selected = Math.max(0, Math.min(stages.length - 1, index));
@@ -1789,13 +1767,16 @@
         $("#stage-description").textContent = s.description;
         $("#photo-caption").textContent =
           num + " / " + s.title.toUpperCase() + " · NANOFABRICATION JOURNAL";
-        $("#stage-count").textContent = num + " / 07";
+        $("#stage-count").textContent =
+          num + " / " + String(stages.length).padStart(2, "0");
         $("#previous-stage").disabled = $("#photo-previous").disabled =
           selected === 0;
         $("#next-stage").disabled = $("#photo-next").disabled =
           selected === stages.length - 1;
         if ($("#photo-dialog").open) updateFullPhoto();
       }
+      selectStage(0);
+
       function updateFullPhoto() {
         $("#full-photo").src = stages[selected].image;
         $("#full-photo").alt = $("#stage-photo").alt;
